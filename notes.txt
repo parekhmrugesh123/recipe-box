@@ -1,0 +1,16 @@
+Recipe fields
+
+Name
+Description
+Image/s
+Prep time 
+Cook time 
+Ingredients 
+Directions
+
+
+Mongo Commands 
+
+Mongosh
+use recipe-box 
+db.recipeboxes.find()

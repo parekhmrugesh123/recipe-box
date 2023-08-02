@@ -1,0 +1,44 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <h2 class="text-center">Edit Recipe</h2>
+        <div class="col-6 offset-3">
+            <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name</label>
+                    <input class="form-control" value="<%= recipe.name %>" type="text" id="name" name="recipe[name]"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="summary">Summary</label>
+                    <input class="form-control" value="<%= recipe.summary %>" type="text" id="summary"
+                        name="recipe[summary]" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Image URL</label>
+                    <input class="form-control" value="<%= recipe.image %>" type="text" id="image" name="recipe[image]"
+                        required>
+                </div>
+                <div class=""><label class="form-label" for="cooktime">Cook Time</label></div>
+                <div class="input-group mb-3">
+                    <input type="number" class="form-control" name="recipe[cooktime]" value="<%= recipe.cooktime %>"
+                        aria-label="Recipient's username" aria-describedby="minutes" required>
+                    <span class="input-group-text" id="minutes">Minutes</span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="ingredients">Ingredients</label>
+                    <textarea class="form-control" type="text" id="ingredients" name="recipe[ingredients]"
+                        required><%= recipe.ingredients %></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="directions">Directions</label>
+                    <textarea class="form-control" type="text" id="directions" rows="5" name="recipe[directions]"
+                        required><%= recipe.directions %></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <button class="btn btn-info">Update</button>
+                    <a class="btn btn-danger" href="/recipes/<%= recipe._id %>">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
