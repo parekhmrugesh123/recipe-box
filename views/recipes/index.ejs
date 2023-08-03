@@ -10,10 +10,10 @@
             <% for (let recipe of recipes) { %>
                 <div class="card mb-3">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <img class="img-fluid" src="<%= recipe.image %>" alt="">
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-4">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <%= recipe.name %>
@@ -29,3 +29,5 @@
                 <% } %>
         </ul>
     </div>
+
+    <!-- change to grid cards -->

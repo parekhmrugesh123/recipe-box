@@ -22,6 +22,7 @@ router.post('/', validateComment, catchAsync(async (req, res) => {
     recipe.comments.push(comment);
     await comment.save();
     await recipe.save();
+    req.flash('success', 'Comment posted!');
     res.redirect(`/recipes/${recipe._id}`);
 }));
 
@@ -29,6 +30,7 @@ router.delete('/:commentId', catchAsync(async (req, res) => {
     const { id, commentId } = req.params;
     await RecipeBox.findByIdAndUpdate(id, { $pull: { comments: commentId } });
     await Comment.findByIdAndDelete(commentId);
+    req.flash('success', 'Comment deleted!');
     res.redirect(`/recipes/${id}`);
 }))
 
