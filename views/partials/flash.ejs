@@ -1,12 +1,12 @@
 <% if(success && success.length) {%>
-    <div class="col-lg-4 alert alert-success alert-dismissible fade show py-3" role="alert">
+    <div class="col-lg-6 offset-lg-3 alert alert-success alert-dismissible fade show py-3" role="alert">
         <%= success %>
             <button type="button" class="btn btn-sm btn-close py-4" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <% } %>
 
         <% if(error && error.length) {%>
-            <div class="col-lg-4 alert alert-danger alert-dismissible fade show py-3" role="alert">
+            <div class="col-lg-6 offset-lg-3 alert alert-danger alert-dismissible fade show py-3" role="alert">
                 <%= error %>
                     <button type="button" class="btn btn-sm btn-close py-4" data-bs-dismiss="alert"
                         aria-label="Close"></button>
