@@ -10,6 +10,10 @@ const RecipeBoxSchema = new Schema({
     cooktime: Number,
     ingredients: String,
     directions: String,
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
     comments: [
         {
             type: Schema.Types.ObjectId,

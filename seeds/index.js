@@ -16,6 +16,7 @@ const seedDB = async () => {
 
         for (const recipeData of recipes) {
             const recipe = new RecipeBox({
+                author: '64cc4bd5a27f562443809f32',
                 name: recipeData.name,
                 summary: recipeData.summary,
                 image: `https://source.unsplash.com/400x300/?${recipeData.name}`,
