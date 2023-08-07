@@ -3,10 +3,19 @@ const Comment = require('./comment');
 const Schema = mongoose.Schema;
 
 // Schema for the RecipeBox collection
+const ImageSchema = new Schema({
+    url: String,
+    fileName: String,
+});
+
+ImageSchema.virtual('thumbnail').get(function () {
+    return this.url.replace('/upload', '/upload/w_200');
+});
+
 const RecipeBoxSchema = new Schema({
     name: String,
     summary: String,
-    image: String,
+    images: [ImageSchema],
     cooktime: Number,
     ingredients: String,
     directions: String,

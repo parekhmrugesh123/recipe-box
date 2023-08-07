@@ -1,4 +1,5 @@
 const RecipeBox = require('../models/recipebox');
+const { cloudinary } = require('../cloudinary');
 
 module.exports.index = async (req, res) => {
     const recipes = await RecipeBox.find({});
@@ -11,6 +12,7 @@ module.exports.newForm = (req, res) => {
 
 module.exports.createRecipe = async (req, res) => {
     const recipe = new RecipeBox(req.body.recipe);
+    recipe.images = req.files.map(f => ({ url: f.path, fileName: f.filename }));
     recipe.author = req.user._id;
     await recipe.save();
     req.flash('success', 'Successfully created new recipe!');
@@ -44,6 +46,15 @@ module.exports.editForm = async (req, res) => {
 module.exports.updateRecipe = async (req, res) => {
     const { id } = req.params;
     const recipe = await RecipeBox.findByIdAndUpdate(id, { ...req.body.recipe });
+    const imgs = req.files.map(f => ({ url: f.path, fileName: f.filename }));
+    recipe.images.push(...imgs);
+    await recipe.save();
+    if (req.body.deleteImages) {
+        for (let fName of req.body.deleteImages) {
+            await cloudinary.uploader.destroy(fName);
+        }
+        await recipe.updateOne({ $pull: { images: { fileName: { $in: req.body.deleteImages } } } });
+    };
     req.flash('success', 'Successfully updated recipe!');
     res.redirect(`/recipes/${recipe._id}`);
 }

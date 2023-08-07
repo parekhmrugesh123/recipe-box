@@ -2,7 +2,7 @@
     <div class="row">
         <h2 class="text-center">New Recipe</h2>
         <div class="col-6 offset-3">
-            <form action="/recipes" method="POST" class="needs-validation" novalidate>
+            <form action="/recipes" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
                 <div class="mb-3">
                     <label class="form-label" for="name">Name</label>
                     <input class="form-control" type="text" id="name" name="recipe[name]" required>
@@ -12,8 +12,8 @@
                     <input class="form-control" type="text" id="summary" name="recipe[summary]" required>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="image">Image URL</label>
-                    <input class="form-control" type="text" id="image" name="recipe[image]" required>
+                    <label for="image" class="form-label">Choose image(s)</label>
+                    <input class="form-control" name="image" type="file" id="image" multiple>
                 </div>
                 <div class=""><label class="form-label" for="cooktime">Cook Time</label></div>
                 <div class="input-group mb-3">

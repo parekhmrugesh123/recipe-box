@@ -2,7 +2,8 @@
     <div class="row">
         <h2 class="text-center">Edit Recipe</h2>
         <div class="col-6 offset-3">
-            <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST" class="needs-validation" novalidate>
+            <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST" class="needs-validation"
+                enctype="multipart/form-data" novalidate>
                 <div class="mb-3">
                     <label class="form-label" for="name">Name</label>
                     <input class="form-control" value="<%= recipe.name %>" type="text" id="name" name="recipe[name]"
@@ -14,9 +15,8 @@
                         name="recipe[summary]" required>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="image">Image URL</label>
-                    <input class="form-control" value="<%= recipe.image %>" type="text" id="image" name="recipe[image]"
-                        required>
+                    <label for="image" class="form-label">Add image(s)</label>
+                    <input class="form-control" name="image" type="file" id="image" multiple>
                 </div>
                 <div class=""><label class="form-label" for="cooktime">Cook Time</label></div>
                 <div class="input-group mb-3">
@@ -33,6 +33,16 @@
                     <label class="form-label" for="directions">Directions</label>
                     <textarea class="form-control" type="text" id="directions" rows="5" name="recipe[directions]"
                         required><%= recipe.directions %></textarea>
+                </div>
+                <div class="mb-3">
+                    <% recipe.images.forEach(function (img, i) { %>
+                        <img class="img-thumbnail" src="<%= img.thumbnail %>" alt="">
+                        <div class="form-check-inline">
+                            <input type="checkbox" name="deleteImages[]" value="<%= img.fileName %>"
+                                id="image-<%= i %>">
+                            <label for="image-<%= i %>">Delete</label>
+                        </div>
+                        <% }) %>
                 </div>
 
                 <div class="mb-3">

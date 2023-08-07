@@ -19,7 +19,16 @@ const seedDB = async () => {
                 author: '64cc4bd5a27f562443809f32',
                 name: recipeData.name,
                 summary: recipeData.summary,
-                image: `https://source.unsplash.com/400x300/?${recipeData.name}`,
+                images: [
+                    {
+                        url: 'https://res.cloudinary.com/dietyfhtf/image/upload/v1691303968/RecipeBox/gad5h7knaak0ldoqnbsi.jpg',
+                        fileName: 'RecipeBox/gad5h7knaak0ldoqnbsi',
+                    },
+                    {
+                        url: 'https://res.cloudinary.com/dietyfhtf/image/upload/v1691303968/RecipeBox/apqozktazgdsyl0eg7za.jpg',
+                        fileName: 'RecipeBox/apqozktazgdsyl0eg7za',
+                    }
+                ],
                 cooktime: recipeData.cooktime,
                 ingredients: recipeData.ingredients,
                 directions: recipeData.directions,

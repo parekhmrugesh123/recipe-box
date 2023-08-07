@@ -1,33 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
 <% layout('layouts/boilerplate') %>
-    <h1 class="text-center">All Recipes</h1>
-    <div class="text-center">
-        <a class="my-3 btn btn-primary btn-lg" href="/recipes/new">Add Recipe</a>
+    <h1 class="text-center">Recipes</h1>
+    <div class="text-center my-3">
+        <a class="btn btn-primary" href="/recipes/new">Add Recipe</a>
     </div>
     <div class="mb-5">
-        <ul>
-            <% for (let recipe of recipes) { %>
-                <div class="card mb-3">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <img class="img-fluid" src="<%= recipe.image %>" alt="">
-                        </div>
-                        <div class="col-md-4">
+        <ul class="px-0">
+            <div class="row">
+                <% for (let recipe of recipes) { %>
+                    <div class="mb-3 col-xl-3 col-lg-4 col-md-6">
+                        <div class="card h-100">
+                            <img class="img-fluid" src="<%= recipe.images[0].url %>" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    <%= recipe.name %>
+                                    <a href="/recipes/<%= recipe._id %>"
+                                        class="card-text link-dark link-underline link-underline-opacity-0">
+                                        <%= recipe.name %>
+                                    </a>
                                 </h5>
                                 <p class="card-text">
                                     <%= recipe.summary %>
                                 </p>
-                                <a href="/recipes/<%= recipe._id %>" class="btn btn-sm btn-outline-secondary">View</a>
                             </div>
                         </div>
                     </div>
-                </div>
-                <% } %>
+                    <% } %>
+            </div>
         </ul>
     </div>
-
-    <!-- change to grid cards -->
