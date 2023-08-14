@@ -1,13 +1,13 @@
 module.exports = [
     {
-        name: "Classic Spaghetti Bolognese",
+        name: "Spaghetti Bolognese",
         summary: "A delicious and hearty Italian pasta dish.",
         cooktime: 30,
         ingredients: "Spaghetti, ground beef, onions, garlic, tomatoes, tomato paste, olive oil, basil, oregano, salt, pepper, Parmesan cheese",
         directions: "1. Cook spaghetti according to package instructions. 2. In a large skillet, heat olive oil over medium heat and sauté onions and garlic. 3. Add ground beef and cook until browned. 4. Stir in tomatoes, tomato paste, basil, oregano, salt, and pepper. 5. Simmer sauce for 15 minutes. 6. Serve sauce over cooked spaghetti and sprinkle with Parmesan cheese.",
     },
     {
-        name: "Chicken Alfredo",
+        name: "Alfredo pasta",
         summary: "Creamy and flavorful pasta with tender chicken.",
         cooktime: 25,
         ingredients: "Fettuccine pasta, chicken breast, heavy cream, butter, garlic, Parmesan cheese, salt, pepper, parsley",
@@ -63,7 +63,7 @@ module.exports = [
         directions: "1. Preheat the oven to 350°F (175°C). 2. In a bowl, cream butter and sugars until light and fluffy. 3. Beat in eggs one at a time and add vanilla extract. 4. In a separate bowl, whisk together flour, baking soda, and salt. 5. Gradually add the dry ingredients to the wet ingredients. 6. Stir in chocolate chips. 7. Drop spoonfuls of dough onto a baking sheet. 8. Bake the cookies in the oven for about 10-12 minutes until golden. 9. Allow the cookies to cool on a wire rack before serving.",
     },
     {
-        name: "Creamy Garlic Mashed Potatoes",
+        name: "Creamy Mashed Potatoes",
         summary: "Smooth and creamy mashed potatoes with a hint of garlic.",
         cooktime: 30,
         ingredients: "Potatoes, butter, milk, garlic, salt, pepper, chives",

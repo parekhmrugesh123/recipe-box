@@ -10,24 +10,24 @@ mongoose.connect('mongodb://localhost:27017/recipe-box')
         console.log(err);
     })
 
+const formatRecipeNameForUrl = (name) => {
+    return encodeURIComponent(name.toLowerCase().replace(/\s+/g, '-'));
+};
+
 const seedDB = async () => {
     try {
         await RecipeBox.deleteMany({});
 
         for (const recipeData of recipes) {
+            const formattedName = formatRecipeNameForUrl(recipeData.name);
             const recipe = new RecipeBox({
-                author: '64cc4bd5a27f562443809f32',
+                author: '64cc4cd803a095e4e5f11030',
                 name: recipeData.name,
                 summary: recipeData.summary,
                 images: [
                     {
-                        url: 'https://res.cloudinary.com/dietyfhtf/image/upload/v1691303968/RecipeBox/gad5h7knaak0ldoqnbsi.jpg',
-                        fileName: 'RecipeBox/gad5h7knaak0ldoqnbsi',
+                        url: `https://source.unsplash.com/800x800/?${formattedName}`,
                     },
-                    {
-                        url: 'https://res.cloudinary.com/dietyfhtf/image/upload/v1691303968/RecipeBox/apqozktazgdsyl0eg7za.jpg',
-                        fileName: 'RecipeBox/apqozktazgdsyl0eg7za',
-                    }
                 ],
                 cooktime: recipeData.cooktime,
                 ingredients: recipeData.ingredients,
@@ -44,5 +44,3 @@ const seedDB = async () => {
 seedDB().then(() => {
     mongoose.connection.close();
 })
-
-//https://source.unsplash.com/800x800/?recipe

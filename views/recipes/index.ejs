@@ -1,29 +1,54 @@
 <% layout('layouts/boilerplate') %>
-    <h1 class="text-center">Recipes</h1>
-    <div class="text-center my-3">
-        <a class="btn btn-primary" href="/recipes/new">Add Recipe</a>
-    </div>
-    <div class="mb-5">
-        <ul class="px-0">
-            <div class="row">
-                <% for (let recipe of recipes) { %>
-                    <div class="mb-3 col-xl-3 col-lg-4 col-md-6">
-                        <div class="card h-100">
-                            <img class="img-fluid" src="<%= recipe.images[0].url %>" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <a href="/recipes/<%= recipe._id %>"
-                                        class="card-text link-dark link-underline link-underline-opacity-0">
-                                        <%= recipe.name %>
-                                    </a>
-                                </h5>
-                                <p class="card-text">
-                                    <%= recipe.summary %>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <% } %>
+    <div id="myCarousel" class="carousel slide mb-3" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1633040248073-9a31468f7e99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1300&q=3&h=500"
+                    alt="" class="img-fluid">
             </div>
-        </ul>
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1603384358453-e337643f75fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1300&q=3&h=500"
+                    alt="" class="img-fluid">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1300&q=3&h=500"
+                    alt="" class="img-fluid">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+    <h1 class="text-center fw-normal">Recipes</h1>
+    <div class="text-center my-4">
+        <a class="btn btn-primary rounded-4" href="/recipes/new">Add Recipe</a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3 mb-5">
+        <% for (let recipe of recipes) { %>
+            <div class="col">
+                <div class="card rounded-4 h-100 shadow">
+                    <div class="card-img-top rounded-top-4 overflow-hidden" style="height: 300px;">
+                        <img class="img-fluid" src="<%= recipe.images[0].url %>" alt="">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="/recipes/<%= recipe._id %>"
+                                class="card-text link-dark link-underline link-underline-opacity-0">
+                                <%= recipe.name %>
+                            </a>
+                        </h5>
+                        <p class="card-text">
+                            <%= recipe.summary %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <% } %>
     </div>

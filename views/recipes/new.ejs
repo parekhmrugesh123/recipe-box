@@ -1,41 +1,40 @@
 <% layout('layouts/boilerplate') %>
-    <div class="row">
-        <h2 class="text-center">New Recipe</h2>
-        <div class="col-6 offset-3">
-            <form action="/recipes" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
-                <div class="mb-3">
-                    <label class="form-label" for="name">Name</label>
-                    <input class="form-control" type="text" id="name" name="recipe[name]" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="summary">Summary</label>
-                    <input class="form-control" type="text" id="summary" name="recipe[summary]" required>
-                </div>
-                <div class="mb-3">
-                    <label for="image" class="form-label">Choose image(s)</label>
-                    <input class="form-control" name="image" type="file" id="image" multiple>
-                </div>
-                <div class=""><label class="form-label" for="cooktime">Cook Time</label></div>
-                <div class="input-group mb-3">
-                    <input type="number" class="form-control" name="recipe[cooktime]" aria-label="Recipient's username"
-                        aria-describedby="minutes" required>
-                    <span class="input-group-text" id="minutes">Minutes</span>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="ingredients">Ingredients</label>
-                    <textarea class="form-control" type="text" id="ingredients" name="recipe[ingredients]"
-                        required></textarea>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="directions">Directions</label>
-                    <textarea class="form-control" type="text" id="directions" rows="5" name="recipe[directions]"
-                        required></textarea>
-                </div>
+    <div class="col-lg-6 offset-lg-3 col-12">
+        <h3 class="text-center fw-normal">Add Recipe</h3>
+        <form action="/recipes" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
+            <div class="mb-3">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control rounded-4" type="text" id="name" name="recipe[name]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="summary">Summary</label>
+                <input class="form-control rounded-4" type="text" id="summary" name="recipe[summary]" required>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Choose image(s)</label>
+                <input class="form-control rounded-4" name="image" type="file" id="image" multiple>
+            </div>
+            <div class=""><label class="form-label" for="cooktime">Cook Time</label></div>
+            <div class="input-group mb-3">
+                <input type="number" class="form-control rounded-start-4" name="recipe[cooktime]"
+                    aria-label="Recipient's username" aria-describedby="minutes" required>
+                <span class="input-group-text rounded-end-4" id="minutes">Minutes</span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="ingredients">Ingredients</label>
+                <textarea class="form-control rounded-4" type="text" id="ingredients" name="recipe[ingredients]"
+                    required></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="directions">Directions</label>
+                <textarea class="form-control rounded-4" type="text" id="directions" rows="4" name="recipe[directions]"
+                    required></textarea>
+            </div>
 
-                <div class="mb-3">
-                    <button class="btn btn-success">Add</button>
-                    <a class="btn btn-secondary" href="/recipes">Back</a>
-                </div>
-            </form>
-        </div>
+            <div class="mb-3">
+                <button class="d-block btn btn-success w-50 py-2 mb-3 mx-auto rounded-4">Add</button>
+                <a class="d-block btn btn-outline-secondary w-50 py-2 mx-auto rounded-4" href="/recipes">Back</a>
+            </div>
+        </form>
+    </div>
     </div>

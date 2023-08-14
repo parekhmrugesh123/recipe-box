@@ -1,54 +1,60 @@
 <% layout('layouts/boilerplate') %>
-    <div class="row">
-        <h2 class="text-center">Edit Recipe</h2>
-        <div class="col-6 offset-3">
-            <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST" class="needs-validation"
-                enctype="multipart/form-data" novalidate>
-                <div class="mb-3">
-                    <label class="form-label" for="name">Name</label>
-                    <input class="form-control" value="<%= recipe.name %>" type="text" id="name" name="recipe[name]"
-                        required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="summary">Summary</label>
-                    <input class="form-control" value="<%= recipe.summary %>" type="text" id="summary"
-                        name="recipe[summary]" required>
-                </div>
-                <div class="mb-3">
-                    <label for="image" class="form-label">Add image(s)</label>
-                    <input class="form-control" name="image" type="file" id="image" multiple>
-                </div>
-                <div class=""><label class="form-label" for="cooktime">Cook Time</label></div>
-                <div class="input-group mb-3">
-                    <input type="number" class="form-control" name="recipe[cooktime]" value="<%= recipe.cooktime %>"
-                        aria-label="Recipient's username" aria-describedby="minutes" required>
-                    <span class="input-group-text" id="minutes">Minutes</span>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="ingredients">Ingredients</label>
-                    <textarea class="form-control" type="text" id="ingredients" name="recipe[ingredients]"
-                        required><%= recipe.ingredients %></textarea>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="directions">Directions</label>
-                    <textarea class="form-control" type="text" id="directions" rows="5" name="recipe[directions]"
-                        required><%= recipe.directions %></textarea>
-                </div>
-                <div class="mb-3">
+    <div class="col-lg-6 offset-lg-3 col-12">
+        <h3 class="text-center fw-normal">Edit Recipe</h3>
+        <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST" class="needs-validation"
+            enctype="multipart/form-data" novalidate>
+            <div class="mb-3">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control rounded-4" value="<%= recipe.name %>" type="text" id="name"
+                    name="recipe[name]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="summary">Summary</label>
+                <input class="form-control rounded-4" value="<%= recipe.summary %>" type="text" id="summary"
+                    name="recipe[summary]" required>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Add image(s)</label>
+                <input class="form-control rounded-4" name="image" type="file" id="image" multiple>
+            </div>
+            <div class=""><label class="form-label" for="cooktime">Cook Time</label></div>
+            <div class="input-group mb-3">
+                <input type="number" class="form-control rounded-start-4" name="recipe[cooktime]"
+                    value="<%= recipe.cooktime %>" aria-label="Recipient's username" aria-describedby="minutes"
+                    required>
+                <span class="input-group-text rounded-end-4" id="minutes">Minutes</span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="ingredients">Ingredients</label>
+                <textarea class="form-control rounded-4" type="text" id="ingredients" name="recipe[ingredients]"
+                    required><%= recipe.ingredients %></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="directions">Directions</label>
+                <textarea class="form-control rounded-4" type="text" id="directions" rows="4" name="recipe[directions]"
+                    required><%= recipe.directions %></textarea>
+            </div>
+            <div class="mb-3">
+                <div class="row g-3">
                     <% recipe.images.forEach(function (img, i) { %>
-                        <img class="img-thumbnail" src="<%= img.thumbnail %>" alt="">
-                        <div class="form-check-inline">
-                            <input type="checkbox" name="deleteImages[]" value="<%= img.fileName %>"
-                                id="image-<%= i %>">
-                            <label for="image-<%= i %>">Delete</label>
+                        <div class="col-md-4 col-6">
+                            <div class="ratio ratio-1x1">
+                                <img class="img-thumbnail rounded-4" src="<%= img.thumbnail %>" alt="">
+                            </div>
+                            <div class="form-check-inline">
+                                <input type="checkbox" name="deleteImages[]" value="<%= img.fileName %>"
+                                    id="image-<%= i %>">
+                                <label for="image-<%= i %>">Delete</label>
+                            </div>
                         </div>
                         <% }) %>
                 </div>
-
-                <div class="mb-3">
-                    <button class="btn btn-info">Update</button>
-                    <a class="btn btn-danger" href="/recipes/<%= recipe._id %>">Cancel</a>
-                </div>
-            </form>
-        </div>
+            </div>
+            <div class="mb-3">
+                <button class="d-block btn btn-info rounded-4 w-50 py-2 mb-3 mx-auto">Save</button>
+                <a class="d-block btn btn-outline-danger rounded-4 w-50 py-2 mb-3 mx-auto"
+                    href="/recipes/<%= recipe._id %>">Cancel</a>
+            </div>
+        </form>
+    </div>
     </div>
